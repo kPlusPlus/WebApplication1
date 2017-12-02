@@ -9,7 +9,9 @@ namespace WebApplication1.Models
     {
         public int ArtistID { get; set; }
         public string Name { get; set; }
-        public int ReviewID { get; set; }
+        //public int ReviewID { get; set; }
+
         public List<Album> Albums { get; set; }
+        public List<Review> Review {get;set;}
     }
 }
