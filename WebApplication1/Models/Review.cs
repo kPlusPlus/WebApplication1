@@ -8,5 +8,6 @@
         public string Contents { get; set; }
         public string ReviewerEmail { get; set; }
 
+
     }
 }
