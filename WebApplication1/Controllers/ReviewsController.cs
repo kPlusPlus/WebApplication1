@@ -6,8 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WebApplication1.Models;
 
-namespace WebApplication1.Models
+namespace WebApplication1.Controllers
 {
     public class ReviewsController : Controller
     {
@@ -16,7 +17,8 @@ namespace WebApplication1.Models
         // GET: Reviews
         public ActionResult Index()
         {
-            return View(db.Reviews.ToList());
+            var reviews = db.Reviews.Include(r => r.Album);
+            return View(reviews.ToList());
         }
 
         // GET: Reviews/Details/5
@@ -37,6 +39,7 @@ namespace WebApplication1.Models
         // GET: Reviews/Create
         public ActionResult Create()
         {
+            ViewBag.AlbumID = new SelectList(db.Albums, "AlbumID", "Title");
             return View();
         }
 
@@ -45,7 +48,7 @@ namespace WebApplication1.Models
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ReviewID,AlbumID,Contents,ReviewerEmail")] Review review)
+        public ActionResult Create([Bind(Include = "ReviewID,AlbumID,Contents,Artist,ReviewerEmail")] Review review)
         {
             if (ModelState.IsValid)
             {
@@ -54,6 +57,7 @@ namespace WebApplication1.Models
                 return RedirectToAction("Index");
             }
 
+            ViewBag.AlbumID = new SelectList(db.Albums, "AlbumID", "Title", review.AlbumID);
             return View(review);
         }
 
@@ -69,6 +73,7 @@ namespace WebApplication1.Models
             {
                 return HttpNotFound();
             }
+            ViewBag.AlbumID = new SelectList(db.Albums, "AlbumID", "Title", review.AlbumID);
             return View(review);
         }
 
@@ -77,7 +82,7 @@ namespace WebApplication1.Models
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ReviewID,AlbumID,Contents,ReviewerEmail")] Review review)
+        public ActionResult Edit([Bind(Include = "ReviewID,AlbumID,Contents,Artist,ReviewerEmail")] Review review)
         {
             if (ModelState.IsValid)
             {
@@ -85,6 +90,7 @@ namespace WebApplication1.Models
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.AlbumID = new SelectList(db.Albums, "AlbumID", "Title", review.AlbumID);
             return View(review);
         }
 
