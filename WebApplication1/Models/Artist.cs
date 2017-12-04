@@ -10,7 +10,9 @@ namespace WebApplication1.Models
         public int ArtistID { get; set; }
         public string Name { get; set; }    
         
-        public virtual ICollection<Album> Album { get; set; }        
+        public virtual ICollection<Album> Album { get; set; }
+
+        
 
     }
 }
