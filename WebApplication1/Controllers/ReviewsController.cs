@@ -48,7 +48,7 @@ namespace WebApplication1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ReviewID,AlbumID,Contents,Artist,ReviewerEmail")] Review review)
+        public ActionResult Create([Bind(Include = "ReviewID,AlbumID,Contents,ReviewerEmail")] Review review)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace WebApplication1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ReviewID,AlbumID,Contents,Artist,ReviewerEmail")] Review review)
+        public ActionResult Edit([Bind(Include = "ReviewID,AlbumID,Contents,ReviewerEmail")] Review review)
         {
             if (ModelState.IsValid)
             {

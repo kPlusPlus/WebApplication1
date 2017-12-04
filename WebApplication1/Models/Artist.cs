@@ -8,10 +8,9 @@ namespace WebApplication1.Models
     public class Artist
     {
         public int ArtistID { get; set; }
-        public string Name { get; set; }
-        //public int ReviewID { get; set; }
-        public List<Album> Album { get; set; }
-        public List<Review> Review {get;set;}
+        public string Name { get; set; }    
+        
+        public virtual ICollection<Album> Album { get; set; }
 
     }
 }
