@@ -14,6 +14,12 @@ namespace WebApplication1.Controllers
     {
         private WebApplication1Context db = new WebApplication1Context();
 
+        public ActionResult DisplayByArtist(int ArtistId)
+        {
+
+            return View();
+        }
+
         // GET: Albums
         public ActionResult Index()
         {
@@ -37,6 +43,7 @@ namespace WebApplication1.Controllers
         }
 
         // GET: Albums/Create
+        [Authorize()]
         public ActionResult Create()
         {
             ViewBag.ArtistID = new SelectList(db.Artists, "ArtistID", "Name");
