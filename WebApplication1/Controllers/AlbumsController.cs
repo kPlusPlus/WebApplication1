@@ -42,8 +42,7 @@ namespace WebApplication1.Controllers
             return View(album);
         }
 
-        // GET: Albums/Create
-        [Authorize()]
+        // GET: Albums/Create        
         public ActionResult Create()
         {
             ViewBag.ArtistID = new SelectList(db.Artists, "ArtistID", "Name");
