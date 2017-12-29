@@ -13,10 +13,9 @@ namespace WebApplication1.Controllers
     public class AlbumsController : Controller
     {
         private WebApplication1Context db = new WebApplication1Context();
-
-        public ActionResult DisplayByArtist(int ArtistId)
+        public ActionResult DisplayByArtist(int ArtistID)
         {
-
+            // imagine code here !!
             return View();
         }
 
@@ -43,6 +42,7 @@ namespace WebApplication1.Controllers
         }
 
         // GET: Albums/Create        
+        // This display the form to the user
         public ActionResult Create()
         {
             ViewBag.ArtistID = new SelectList(db.Artists, "ArtistID", "Name");

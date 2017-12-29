@@ -1,1 +1,1 @@
-﻿sve ču doraditi i postaviti logon user
+﻿--- sve ču doraditi i postaviti logon user
